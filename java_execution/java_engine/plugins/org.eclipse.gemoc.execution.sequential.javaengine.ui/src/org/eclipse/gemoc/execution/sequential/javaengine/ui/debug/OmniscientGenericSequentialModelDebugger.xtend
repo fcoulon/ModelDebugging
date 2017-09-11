@@ -32,6 +32,8 @@ import org.eclipse.xtext.naming.QualifiedName
 import org.eclipse.gemoc.execution.sequential.javaengine.ui.Activator
 import org.eclipse.gemoc.executionframework.engine.core.EngineStoppedException
 import org.eclipse.gemoc.xdsmlframework.api.core.IExecutionEngine
+import org.eclipse.gemoc.xdsmlframework.api.engine_addon.IEngineAddon
+import org.eclipse.gemoc.executionframework.extensions.sirius.services.IModelAnimator
 
 public class OmniscientGenericSequentialModelDebugger extends GenericSequentialModelDebugger implements ITraceViewListener {
 
@@ -279,8 +281,9 @@ public class OmniscientGenericSequentialModelDebugger extends GenericSequentialM
 			try {
 				if(!callerStack.empty){
 					updateData(threadName, callerStack.findFirst[true])
+					callerStack.findFirst[true]
 				} else {
-					
+					updateData(threadName, executedModelRoot)
 				}
 			} catch (IllegalStateException e) {
 				// Shhh
